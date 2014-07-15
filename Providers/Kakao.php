@@ -18,7 +18,7 @@ class Hybrid_Providers_Kakao extends Hybrid_Provider_Model_OAuth2
 		parent::initialize();
 
 		// Provider api end-points
-        $this->api->api_base_url  = "https://kapi.kakao.com/v1/";
+		$this->api->api_base_url  = "https://kapi.kakao.com/v1/";
 		$this->api->authorize_url = "https://kauth.kakao.com/oauth/authorize";
 		$this->api->token_url     = "https://kauth.kakao.com/oauth/token";
 	}
@@ -122,16 +122,16 @@ class Hybrid_Providers_Kakao extends Hybrid_Provider_Model_OAuth2
 		curl_setopt($ch, CURLOPT_USERAGENT      , $this->api->curl_useragent );
 		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , $this->api->curl_connect_time_out );
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER , $this->api->curl_ssl_verifypeer );
-        curl_setopt($ch, CURLOPT_HTTPHEADER     , $this->api->curl_header );
+		curl_setopt($ch, CURLOPT_HTTPHEADER     , $this->api->curl_header );
 
 		if($this->api->curl_proxy){
 			curl_setopt( $ch, CURLOPT_PROXY        , $this->curl_proxy);
 		}
 
-        if( $type == "POST" ){
-            curl_setopt($ch, CURLOPT_POST, 1); 
-            if($params) curl_setopt( $ch, CURLOPT_POSTFIELDS, http_build_query($params) );
-        }
+		if( $type == "POST" ){
+			curl_setopt($ch, CURLOPT_POST, 1); 
+			if($params) curl_setopt( $ch, CURLOPT_POSTFIELDS, http_build_query($params) );
+		}
 
 		$response = curl_exec($ch);
 		Hybrid_Logger::debug( "OAuth2Client::request(). dump request info: ", serialize( curl_getinfo($ch) ) );
