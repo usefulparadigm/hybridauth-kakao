@@ -39,7 +39,6 @@ class Hybrid_Providers_Kakao extends Hybrid_Provider_Model_OAuth2
 		$code = (array_key_exists('code',$_REQUEST))?$_REQUEST['code']:"";
 
 		try{
-            // $this->api->authenticate( $code );
 			$this->authenticate( $code ); 
 		}
 		catch( Exception $e ){
@@ -84,7 +83,6 @@ class Hybrid_Providers_Kakao extends Hybrid_Provider_Model_OAuth2
 	{
 		$params = array(
 			"client_id"     => $this->api->client_id,
-            // "client_secret" => $this->client_secret,
 			"grant_type"    => "authorization_code",
 			"redirect_uri"  => $this->api->redirect_uri,
 			"code"          => $code
@@ -130,11 +128,10 @@ class Hybrid_Providers_Kakao extends Hybrid_Provider_Model_OAuth2
 			curl_setopt( $ch, CURLOPT_PROXY        , $this->curl_proxy);
 		}
 
-		if( $type == "POST" ){
-			curl_setopt($ch, CURLOPT_POST, 1); 
-            // if($params) curl_setopt( $ch, CURLOPT_POSTFIELDS, $params );
+        if( $type == "POST" ){
+            curl_setopt($ch, CURLOPT_POST, 1); 
             if($params) curl_setopt( $ch, CURLOPT_POSTFIELDS, http_build_query($params) );
-		}
+        }
 
 		$response = curl_exec($ch);
 		Hybrid_Logger::debug( "OAuth2Client::request(). dump request info: ", serialize( curl_getinfo($ch) ) );
