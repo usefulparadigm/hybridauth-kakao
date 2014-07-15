@@ -8,11 +8,13 @@ Usage
 1. Drop Kakao.php to HybridAuth provider directory.
 2. Set config.php as follows:
 
+<pre><code>
   "providers" => array ( 
     "Kakao" => array (
       "enabled" => true,
       "keys"    => array ( "id" => "YOUR-KAKAO-APP-KEY", "secret" => "^_^" ),
     ),
+</code></pre>
 
 Links
 -----
