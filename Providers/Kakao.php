@@ -110,8 +110,8 @@ class Hybrid_Providers_Kakao extends Hybrid_Provider_Model_OAuth2
 
 	private function request( $url, $params=false, $type="GET" )
 	{
-		Hybrid_Logger::info( "Enter OAuth2Client::request( $url )" );
-		Hybrid_Logger::debug( "OAuth2Client::request(). dump request params: ", serialize( $params ) );
+    // Hybrid_Logger::info( "Enter OAuth2Client::request( $url )" );
+    // Hybrid_Logger::debug( "OAuth2Client::request(). dump request params: ", serialize( $params ) );
 
 		$this->http_info = array();
 		$ch = curl_init();
@@ -134,8 +134,8 @@ class Hybrid_Providers_Kakao extends Hybrid_Provider_Model_OAuth2
 		}
 
 		$response = curl_exec($ch);
-		Hybrid_Logger::debug( "OAuth2Client::request(). dump request info: ", serialize( curl_getinfo($ch) ) );
-		Hybrid_Logger::debug( "OAuth2Client::request(). dump request result: ", serialize( $response ) );
+    // Hybrid_Logger::debug( "OAuth2Client::request(). dump request info: ", serialize( curl_getinfo($ch) ) );
+    // Hybrid_Logger::debug( "OAuth2Client::request(). dump request result: ", serialize( $response ) );
 
 		$this->http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 		$this->http_info = array_merge($this->http_info, curl_getinfo($ch));
